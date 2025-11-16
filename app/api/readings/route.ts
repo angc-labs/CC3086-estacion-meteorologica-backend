@@ -3,7 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_ANON_KEY!    // aquí el anon key SÍ es suficiente
+  process.env.SUPABASE_ANON_KEY!
 );
 
 export async function GET() {
