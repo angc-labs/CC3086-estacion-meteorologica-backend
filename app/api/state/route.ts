@@ -34,4 +34,5 @@ export async function POST(req: Request) {
 
   if (error) return NextResponse.json({ error }, { status: 500 });
   return NextResponse.json(data);
-}s
+
+}
