@@ -65,8 +65,9 @@ export async function GET() {
     .from("readings")
     .select("*")
     .order("timestamp", { ascending: false })
-    .limit(100);
+    .limit(1000);
 
   if (error) return NextResponse.json({ error }, { status: 500 });
   return NextResponse.json(data);
 }
+
