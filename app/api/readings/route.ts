@@ -29,7 +29,6 @@ export async function POST(req: Request) {
         accuracy
     } = body;
 
-
     const { error } = await supabase.from("readings").insert({
         ppm_alcohol,
         ppm_h2,
@@ -61,7 +60,6 @@ export async function POST(req: Request) {
   }
 }
 
-
 export async function GET() {
   const { data, error } = await supabase
     .from("readings")
@@ -72,4 +70,3 @@ export async function GET() {
   if (error) return NextResponse.json({ error }, { status: 500 });
   return NextResponse.json(data);
 }
-
