@@ -24,6 +24,7 @@ import {
   PieChart,
   Pie,
   Cell,
+  Legend, 
 } from "recharts";
 import {
   Thermometer,
@@ -502,6 +503,7 @@ export default function Dashboard() {
                     <XAxis dataKey="timestamp" />
                     <YAxis />
                     <ChartTooltip />
+                    <Legend />
                     <Area 
                       type="monotone" 
                       dataKey="lux" 
