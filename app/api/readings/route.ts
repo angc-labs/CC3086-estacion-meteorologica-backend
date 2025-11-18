@@ -23,7 +23,10 @@ export async function POST(req: Request) {
         hum,
         temp_dht,
         lluvia,
-        open
+        open,
+        latitude,
+        longitude,
+        accuracy
     } = body;
 
     const { error } = await supabase.from("readings").insert({
@@ -39,7 +42,10 @@ export async function POST(req: Request) {
         hum,
         temp_dht,
         lluvia,
-        open
+        open,
+        latitude,
+        longitude,
+        accuracy
     });
 
     if (error) {
