@@ -232,7 +232,7 @@ export default function Dashboard() {
         minute: "2-digit",
       }),
       lux: reading.lux,
-      lluvia: reading.lluvia ? 1 : 0,
+      lluvia: reading.lluvia ? 0 : 1,
     }));
   }, [readings]);
 
