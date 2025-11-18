@@ -23,7 +23,10 @@ export async function POST(req: Request) {
         hum,
         temp_dht,
         lluvia,
-        open
+        open,
+        latitude,
+        longitude,
+        accuracy
     } = body;
 
 
@@ -40,7 +43,10 @@ export async function POST(req: Request) {
         hum,
         temp_dht,
         lluvia,
-        open
+        open,
+        latitude,
+        longitude,
+        accuracy
     });
 
     if (error) {
@@ -66,3 +72,4 @@ export async function GET() {
   if (error) return NextResponse.json({ error }, { status: 500 });
   return NextResponse.json(data);
 }
+
