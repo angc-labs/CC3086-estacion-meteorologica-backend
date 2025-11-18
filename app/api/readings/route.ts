@@ -26,7 +26,6 @@ export async function POST(req: Request) {
         open
     } = body;
 
-
     const { error } = await supabase.from("readings").insert({
         ppm_alcohol,
         ppm_h2,
@@ -54,7 +53,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }
-
 
 export async function GET() {
   const { data, error } = await supabase
