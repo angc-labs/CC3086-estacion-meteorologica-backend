@@ -1,37 +1,37 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+// Estado mock para desarrollo
+let currentState = {
+  id: 1,
+  text: "Sistema de monitoreo activo",
+  open: false
+};
 
 export async function GET() {
-  const { data, error } = await supabase
-    .from("state")
-    .select("*")
-    .eq("id", 1)
-    .single();
-
-  if (error) return NextResponse.json({ error }, { status: 500 });
-  return NextResponse.json(data);
+  try {
+    return NextResponse.json(currentState);
+  } catch (err) {
+    console.error(err);
+    return NextResponse.json({ error: "Error obteniendo estado" }, { status: 500 });
+  }
 }
 
 export async function POST(req: Request) {
-  const body = await req.json();
+  try {
+    const body = await req.json();
+    const { text, open } = body;
 
-  const { text, open } = body;
+    // Actualizar estado mock
+    currentState = {
+      ...currentState,
+      text: text ?? currentState.text,
+      open: open ?? currentState.open
+    };
 
-  const { data, error } = await supabase
-    .from("state")
-    .update({
-      text: text ?? null,
-      open: open ?? false
-    })
-    .eq("id", 1)
-    .select()
-    .single();
-
-  if (error) return NextResponse.json({ error }, { status: 500 });
-  return NextResponse.json(data);
-}s
+    console.log("Estado actualizado:", currentState);
+    return NextResponse.json(currentState);
+  } catch (err) {
+    console.error(err);
+    return NextResponse.json({ error: "Error actualizando estado" }, { status: 500 });
+  }
+}
