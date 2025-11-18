@@ -232,7 +232,8 @@ export default function Dashboard() {
         minute: "2-digit",
       }),
       lux: reading.lux,
-      lluvia: reading.lluvia ? 0 : 1,
+      // CAMBIO: 0 = mojado, por lo tanto invertimos la lógica
+      lluvia: reading.lluvia ? 1 : 0, // Ahora 1 significa mojado, 0 significa seco
     }));
   }, [readings]);
 
@@ -531,7 +532,8 @@ export default function Dashboard() {
                   {stats.rainDetected ? '🌧️' : '☀️'}
                 </div>
                 <p className="text-xl font-semibold">
-                  {stats.rainDetected ? 'Lluvia Detectada' : 'Sin Lluvia'}
+                  {/* CAMBIO: Invertimos la lógica del texto también */}
+                  {stats.rainDetected ? 'Mojado - Lluvia Detectada' : 'Seco - Sin Lluvia'}
                 </p>
                 <p className="text-gray-500 mt-2">
                   {stats.rainDetected 
